@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공 튕기기</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");
+      let width = canvas.width;
+      let height = canvas.height;
+
+      //생성자 함수
+      let Ball = function () {
+        this.x = width / 2; //시작위치
+        this.y = height / 2;
+        this.xSpeed = Math.random() * 5 - 5; //이동위치(-5~5사이의 무작위 수)
+        this.ySpeed = 3;
+      };
+
+      let circle = function (x, y, radius, fillCircle) {
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+        if (fillCircle) {
+          ctx.fill();
+        } else {
+          ctx.stroke();
+        }
+      };
+
+      //circle함수를 draw 메서드에 추가함
+      Ball.prototype.draw = function () {
+        circle(this.x, this.y, 5, true); //(this.x,this.y)위치에 반지름 5인 원 그리고, 색칠함
+      };
+
+      Ball.prototype.move = function () {
+        this.x += this.xSpeed;
+        this.y += this.ySpeed;
+      };
+
+      //공이 벽에 부딪히면 방향 바꿔주는 함수
+      Ball.prototype.checkCollision = function () {
+        if (this.x < 0 || this.x > width) {
+          this.xSpeed = -this.xSpeed;
+        }
+        if (this.y < 0 || this.y > height) {
+          this.ySpeed = -this.ySpeed;
+        }
+      };
+      //공 1개 만듦
+      let ball = new Ball();
+      console.log(ball);
+      //공 배열
+      let balls = [];
+      for (let i = 0; i < 10; i++) {
+        balls += new Ball();
+        console.log("balls", balls);
+      }
+      setInterval(function () {
+        ctx.clearRect(0, 0, width, height); //캔버스 지우기
+
+        ball.draw();
+        ball.move();
+        ball.checkCollision();
+
+        ctx.strokeRect(0, 0, width, height); //캔버스 경계선 그리기(200*200)
+      }, 30);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="heading">안녕하세여</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+      // let leftOffset=0;
+
+      // let moveH1=function(){
+      //   $("h1").offset({left:leftOffset});
+      //   leftOffset++;
+
+      //   if(leftOffset >400){
+      //     leftOffset =0;
+      //   }
+      // };
+      // setInterval(moveH1,10);
+
+      //마우스 위치 좌표계
+      // let clickHandler = function(e){
+      //   console.log("Click!"+" "+event.pageX+" "+event.pageY);
+      // };
+      // $("h1").click(clickHandler);
+
+      //마우스 이동 이벤트
+      // $("html").mousemove(function(){
+      //   $("#heading").offset({
+      //     left:event.pageX,
+      //     top:event.pageY
+      //   });
+      // });
+
+      //클릭한 위치로 제목 옮기기
+      // let mouseMove = function(){
+      //   $('#heading').offset({
+      //     left:event.pageX,
+      //     top:event.pageY
+      //   });
+      // };
+
+      // $("html").click(mouseMove);
+
+      let leftOffset=0;
+      let topOffset=0;
+
+      let headMove = function () {
+        $("#heading").offset({
+          left: leftOffset,
+          top:topOffset
+        });
+        leftOffset +=200;
+        topOffset +=200;
+
+       
+      };
+      //setInterval(headMove,2000);
+      
+
+      //p.172
+      let headMove1 = function () {
+        $("#heading").offset({
+          left: 200,
+          top:0
+        });
+      };
+      let headMove2 = function () {
+        $("#heading").offset({
+          top: 200,
+          left:200
+        });
+      };
+      let headMove3 = function () {
+        $("#heading").offset({
+          left: 0,
+          top:200
+        });
+      };
+      let headMove4 = function () {
+        $("#heading").offset({
+          left: 0,
+          top:0
+        });
+      };
+      setInterval(headMove1,2000);
+      setInterval(headMove2,4000);
+      setInterval(headMove3,6000);
+      setInterval(headMove4,8000);
+      //=>처음 한번만 같은 방향으로 가고 그 다음부터 방향이 지멋대로
+      //=>계속 같은 방향으로 가도록
+    </script>
+  </body>
+</html>

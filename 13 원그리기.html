@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>원그리기</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");
+
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "green";
+
+      //arc 메서드를 사용하면 원를 그릴 수 있다
+      //원그리기=> 원의 중심좌표 + 반지름 + 라디안(시작각도 + 종료 각도)
+      //원형=> 0 ~ 2π //180° => π(Math.PI)
+
+      ctx.beginPath(); //원그리기 할 때 반드시 먼저 호출해야함
+      ctx.arc(50, 50, 20, 0, Math.PI / 2, false);
+      //arc(원중심x,원중심y,반지름,시작각도,종료각도,그리기 방향)
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(100, 50, 20, 0, Math.PI, false);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(150, 50, 20, 0, Math.PI * 2, false);
+      ctx.stroke();
+
+      //원 그리는 함수
+      let circle = function (x, y, radius, fillCircle, color) {
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+        if (fillCircle === true) {
+          ctx.fillStyle = color;
+          ctx.fill();
+          //이 순서가 중요하다! 두 줄을 바꿔쓰면 색상변경안되고 그냥 검정으로 채워짐
+        } else {
+          ctx.stroke();
+        }
+      };
+
+      ctx.lineWidth = 4;
+
+      ctx.strokeStyle = "red";
+      circle(100, 200, 10, true, "red");
+
+      ctx.strokeStyle = "orange";
+      circle(100, 200, 20);
+
+      ctx.strokeStyle = "yellow";
+      circle(100, 200, 30);
+
+      ctx.strokeStyle = "green";
+      circle(100, 200, 40);
+
+      ctx.strokeStyle = "blue";
+      circle(100, 200, 50);
+
+      ctx.strokeStyle = "purple";
+      circle(100, 200, 60);
+
+      //연습문제 => 눈사람 그리기
+      ctx.lineWidth = 4;
+
+      ctx.strokeStyle = "black";
+      circle(250, 200, 40); //얼굴
+      circle(250, 300, 60); //몸통
+      circle(239, 190, 6, true, "black"); //눈
+      circle(261, 190, 6, true, "black");
+      circle(250, 205, 6, true, "orange"); //코
+      circle(250, 280, 6, true, "black"); //몸통단추
+      circle(250, 300, 6, true, "black");
+      circle(250, 320, 6, true, "black");
+
+      //눈사람 그리는 함수
+      let drawSnowman = function(x,y){
+      ctx.beginPath();
+      ctx.lineWidth = 4;
+
+      ctx.strokeStyle = "black";
+      circle(x, y, 40); //얼굴
+      circle(x, y+100, 60); //몸통
+      circle(x-11, y-10, 6, true, "black"); //눈
+      circle(x+11, y-10, 6, true, "black");
+      circle(x, y+5, 6, true, "orange"); //코
+      circle(x, y+80, 6, true, "black"); //몸통단추
+      circle(x, y+100, 6, true, "black");
+      circle(x, y+120, 6, true, "black");
+        
+      };
+      drawSnowman(50,50);
+      drawSnowman(400,200);
+
+
+    //좌표 배열 그리기
+    let drawPoints =function([[a,b],[c,d],[e,f],[g,h],[i,j]]){
+      
+      ctx.strokeStyle="turquoise";
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(a,b);
+      ctx.lineTo(c,d);
+      ctx.moveTo(e,f);
+      ctx.lineTo(g,h);
+      ctx.moveTo(i,j);
+      ctx.stroke();
+    }
+    let points=[[50,50],[50,100],[100,100],[100,50],[50,50]];
+    drawPoints(points); // ### 변수로 전달하면 오류
+    //drawPoints(points);
+    </script>
+  </body>
+</html>

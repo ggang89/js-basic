@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>숨겨진 보물 찾기</title>
+  </head>
+  <body>
+    <h1 id="heading">숨겨진 보물을 찾아보세요!</h1>
+
+    <img
+      id="map"
+      width="400"
+      height="400"
+      src="http://nostarch.com/images/treasuremap.png"
+    />
+
+    <p id="distance"></p>
+    <p id="click"></p>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+      //무작위 숫자 고르는 함수
+      let getRandomNumber = function (size) {
+        return Math.floor(Math.random() * size);
+      };
+
+      //클릭한 위치에서 보물까지의 거리 계산
+      let getDistance = function (event, target) {
+        let diffX = event.offsetX - target.x; // 클릭한 위치와 보물위치의 떨어진 거리
+        let diffY = event.offsetY - target.y;
+        return Math.sqrt(diffX * diffX + diffY * diffY); //Math.sqrt() 숫자의 제곱근 반환
+        //피타고라스의 정리 사용 => a2 + b2 =c2
+        //삼각형 두 변의 값을 알면 빗변의 길이를 구할 수 있다.
+      };
+
+      //플레이어에게 얼마나 가까운지 알려주기
+      let getDistanceHint = function (distance) {
+        if (distance < 10) {
+          return "바로 앞 입니다.";
+        } else if (distance < 20) {
+          return "정말 가까워요.";
+        } else if (distance < 40) {
+          return "가까워요.";
+        } else if (distance < 80) {
+          return "멀지는 않아요";
+        } else if (distance < 160) {
+          return "멀어요";
+        } else if (distance < 220) {
+          return "괘 멀어요";
+        } else if (distance < 320) {
+          return "너무 멀어요";
+        } else {
+          return "정말 정말 너무 멀어요!";
+        }
+      };
+
+      //보물 좌표 설정하기
+      let width = 400;
+      let height = 400;
+      let clicks = 0;
+
+      let target = {
+        x: getRandomNumber(width),
+        y: getRandomNumber(height),
+      };
+
+      $("#map").click(function (event) {
+        //클릭 카운터 증가
+        clicks++;
+        $("#click").text(clicks + " 번 했습니다."); //몇번 클릭했는지 알려줌
+
+        
+
+        //메시지로 알려주기
+        //1.클릭 event와 target 사이의 거리를 구한다
+        let distance = getDistance(event, target);
+
+        //2.거리를 힌트 문자열로 바꾼다.
+        let distanceHint = getDistanceHint(distance);
+
+        //3.엘리먼트에 표시한다.
+        $("#distance").text(distanceHint);
+
+        //보물을 찾았는지 확인
+        //8픽셀 이내라면 찾은 것으로 간주
+        if (distance < 8) {
+          alert(clicks + " 번 클릭해서 보물을 찾았습니다!");
+        }
+        if(clicks>5){ //게임횟수 제한 5번
+          alert("game over");
+          clicks=0;
+         distanceHint=" 게임이 끝났습니다";
+         $("#distance").text(distanceHint);
+        };
+        //! distanceHint가 let distanceHint보다 위에 있을때는 작동안됨!
+        //=>let const 변수 재사용은 선언보다 밑에서 사용할 때는(있을 때는) 밑에서 위로 접속가능하고,
+        // 선언보다 위에서 사용할 때는 접속안된다! 
+      });
+    </script>
+  </body>
+</html>

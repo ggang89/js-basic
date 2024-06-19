@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>자동차 그리기</title>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+      //생성자 함수
+      let Car = function (x, y) {
+        this.x = x;
+        this.y = y;
+      };
+
+      let drawCar = function (car) {
+        let carHtml = '<img src="http://nostarch.com/images/car.png">';
+
+        let carElement = $(carHtml);
+        //$함수를 사용하여 HTML문자열(carHtml)을 jQuery 엘리먼트로 변화해서 변수에 저장함
+        //let carElement => img태그가 포함된 jQuery엘리먼트가 저장됨
+
+        carElement.css({//css메서드 호출하여 자동차 이미지의 위치 설정
+          position: "absolute",
+          left: car.x,
+          top: car.y
+        });
+
+        $("body").append(carElement);
+        //carElement를 body엘리먼트에 추가함
+      };
+
+      //생성자 함수 호출하기
+      let tesla =new Car(20,20);
+      let nissan =new Car(100,200);
+
+      //drawCar함수 호출
+      drawCar(tesla);
+      drawCar(nissan);
+    </script>
+  </body>
+</html>

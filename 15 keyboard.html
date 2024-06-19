@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="canvas" width="400" height="400"></canvas>
+
+  <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+  <script>
+
+    let keyNames ={
+      32:"space",
+      37:"left",
+      38:"up",
+      39:"right",
+      40:"down",
+      16:"shift",
+      13:"enter"
+    }
+    $("body").keydown(function(event){//$함수로 html의 body를 선택한 후,keydown메서드 호출
+      //keydown 메서드 
+      //=> 어떤 키를 눌렀을 때 호출되는 함수를 인수로 전달함
+      //=>이벤트가 발생할 때마다 event객체를 통해 정보가 전달됨
+      console.log(keyNames[event.keyCode]);
+    });
+  </script>
+</body>
+</html>

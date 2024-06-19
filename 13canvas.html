@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>13장</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      //canvas라를 아이디를 가진 엘리먼트를 DOM객체로 반환해서 변수에 저장
+      let ctx = canvas.getContext("2d");
+      //canvas.getContext로 canvas엘리먼트의 그리기 콘텍스트 객체를 호출함
+      //2d => 캔버스에 2D 이미지를 그린다는 것
+      ctx.fillRect(0, 0, 20, 20); //(0,0)위치에 너비20 높이20인 사각형을 그려라
+      //fillRect(x축,y축,너비,높이)
+
+      for (let i = 0; i < 8; i++) {
+        ctx.fillRect(i * 20, i * 20, 20, 20);
+      }
+    </script>
+  </body>
+</html>

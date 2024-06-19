@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>안녕하세요</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+      let friends = ["철수", "짱구", "맹구", "훈이"];
+
+      for (let i = 0; i < friends.length; i++) {
+        $("body").append("<p>" + friends[i] + "</p>");
+      }
+      let newHead = "짱구와 친구들.";
+      $("h1").text(newHead);
+
+      $("p").hide().fadeIn(6000);
+
+      $("p").append(" 바보");
+     
+     // $("h1").fadeOut(1000).fadeIn(1000);
+      // for (i = 1; i <= 3; i++) {
+      //   $("h1")
+      //     .fadeOut(i * 1000)
+      //     .fadeIn(i * 1000);
+      //     $("h1")
+      //     .fadeOut(i * 1000)
+      //     .fadeIn(i * 1000);
+      // }
+
+      $("h1").delay(2000).fadeTo(2000,0.5)
+    </script>
+  </body>
+</html>

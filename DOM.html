@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="main-heading">안녕하세요</h1>
+  </body>
+  <script>
+    let headingElement = document.getElementById("main-heading");
+    console.log(headingElement.innerHTML);
+
+    let newHeadingText = prompt("새로운 제목을 입력해주세요");
+
+    headingElement.innerHTML = newHeadingText;
+    console.log(headingElement.innerHTML);
+  </script>
+</html>

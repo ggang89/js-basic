@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>로봇그리기</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");
+      ctx.fillStyle = "Turquoise";
+      ctx.fillRect(60, 30, 50, 50); //머리
+      ctx.fillRect(80, 80, 10, 20); //목
+      ctx.fillRect(20, 90, 140, 10); //팔
+      ctx.fillRect(50, 100, 70, 60); //몸통
+      ctx.fillRect(50, 160, 10, 60); //다리1
+      ctx.fillRect(110, 160, 10, 60); //다리2
+
+      ctx.fillStyle = "red";
+      ctx.fillRect(10, 220, 50, 100);
+      ctx.fillStyle = "green";
+      ctx.fillRect(61, 220, 50, 100);
+      ctx.fillStyle = "blue";
+      ctx.fillRect(112, 220, 50, 100);
+
+      //사각형 외곽선 그리기
+      ctx.strokeStyle = "Lightblue"; //선 색깔
+      ctx.lineWidth = 20; //선 두께
+      ctx.strokeRect(200, 220, 100, 100);
+
+      //연습문제
+      ctx.strokeStyle = "hotPink";
+      ctx.lineWidth = 5;
+      ctx.strokeRect(100, 350, 20, 20);
+      ctx.beginPath(); //새로 경로를 그린다
+      ctx.moveTo(110, 370);
+      ctx.lineTo(110, 390);//목
+      ctx.moveTo(110, 390);
+      ctx.lineTo(90, 380);//왼팔
+      ctx.moveTo(110, 390);
+      ctx.lineTo(130, 380);//오른팔
+      ctx.moveTo(110, 390);
+      ctx.lineTo(110, 420);//몸통
+      ctx.moveTo(110,420);
+      ctx.lineTo(90,440);
+      ctx.moveTo(110,420);
+      ctx.lineTo(130,440);
+      ctx.stroke();
+    </script>
+  </body>
+</html>

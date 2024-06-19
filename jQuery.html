@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="main-heading">안녕하세요</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+      // let newHeadingText = prompt("새로운 제목을 입력하세요");
+      // $("#main-heading").text(newHeadingText);
+      //$ (선택자 문자열) => html 엘리먼트 선택
+      //# => 아이디
+
+      $("body").append("<p>새로 만든 문단입니다</p>");
+
+      // for(let i=0;i<3; i++){
+      //   let hobby =prompt("취미를 입력해주세요");
+      //   $('body').append("<p>"+hobby+"</p>");
+      // }
+
+      // $("h1").fadeOut(3000).fadeIn(1000);
+
+      //$("h1").slideUp(1000).slideDown(1000);
+
+      $("h1").append("<p>연습문제입니다</p>");
+      // ### h1 뒤에 p태그로 추가하려고 했는데, h1안에 추가됨???
+
+      for (let i = 0; i < 5; i++) {
+        $("h1").fadeOut(1000);
+        $("h1").fadeIn(1000);
+       
+        console.log(i);
+      }
+      //### 5번 반복해야되는데 3번만 반복함...=>i++해줘서 1개씩 더 추가된 것 for문에는++을 위에만 쓴다!
+
+      //프로그래밍 과제
+      let friends = ["짱구", "철수", "훈이"];
+      $("body").append("<h2>친구를 소개합니다.</h2>");
+      for (i = 0; i < friends.length; i++) {
+        $("body").append("<p>" + friends[i] + "</p>");
+      }
+    </script>
+  </body>
+</html>
