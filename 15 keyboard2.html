@@ -60,15 +60,15 @@
       Ball.prototype.setDirection = function (direction) {
         if (direction === "up") {
           this.xSpeed = 0;
-          this.ySpeed = -speed;
+          this.ySpeed = -this.speed;
         } else if (direction === "down") {
           this.xSpeed = 0;
-          this.ySpeed = speed;
+          this.ySpeed = this.speed;
         } else if (direction === "left") {
-          this.xSpeed = -speed;
+          this.xSpeed = -this.speed;
           this.ySpeed = 0;
         } else if (direction === "right") {
-          this.xSpeed = speed;
+          this.xSpeed = this.speed;
           this.ySpeed = 0;
         } else if (direction === "stop") {
           this.xSpeed = 0;
@@ -76,9 +76,7 @@
         }
       };
       //공 속도
-      Ball.prototype.speed = function () {
-        this.speed = 5;
-      };
+      Ball.prototype.speed = 5
 
       //공 방향 바꿔주는 함수
       Ball.prototype.checkCollision = function () {
