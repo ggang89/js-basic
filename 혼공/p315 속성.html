@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img class="rect" />
+    <img class="rect" />
+    <img class="rect" />
+    <img class="rect" />
+
+    <script>
+      // 속성 조작하기
+      //문서객체.setAttribute(속성이름.값) => 특정 속성에 값 지정
+      //문서객체.getAttribute(속성이름) => 특정 속성 추출
+
+      const rects = document.querySelectorAll(".rect"); //class명 rect를 가진 모든 요소 선택해서 변수에 저장
+
+      rects.forEach((rect, index) => {
+        const width = (index + 1) * 100;
+        const src = `https://loremflickr.com/${width}/250`; //고양이 이미지 무작위 추출사이트
+        rect.setAttribute("src", src);
+        //(간단히) rect.src=src
+      });
+    </script>
+  </body>
+</html>
