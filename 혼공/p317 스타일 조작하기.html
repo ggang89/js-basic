@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+      //스타일 적용하는 법
+      //h1.style.backgroundColor
+      //h1.style['backgroundColor']
+      //h1.style['background-color']
+
+      const divs = document.querySelectorAll("div");
+      divs.forEach((div, index) => {
+        console.log(div, index);
+        const val = index * 10;
+        div.style.height = `10px`;
+        div.style.backgroundColor = `rgba(${val},${val},${val})`;
+      });
+    </script>
+  </body>
+</html>
