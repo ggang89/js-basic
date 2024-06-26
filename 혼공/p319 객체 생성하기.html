@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>객체생성하기</title>
+  </head>
+  <body>
+    <div id="first">
+      <h1>첫번째 div 태그 내부</h1>
+    </div>
+    <div id="second">
+      <h1>두번째 div 태그 내부</h1>
+    </div>
+    <script>
+      //1) 객체 생성하기
+      //document.createElement(태그 이름)
+      //2) 객체 위치 정하기
+      //부모객체.appendChild(자식객체) =>부모객체 아래에 자식객체 추가
+
+      const header = document.createElement("h1"); //h1태그 생성해서 변수에 할당
+
+      //생성한 태그 조작
+      header.textContent = "createElement로 생성한 태그입니다";
+      header.style.color = "white";
+      header.style.backgroundColor = "black";
+
+      //생성한 태그를 추가
+      document.body.appendChild(header);
+
+      //p.321 객체 이동하기
+      const divA = document.querySelector("#first"); //id가 first인 div를 가져옴
+      const divB = document.querySelector("#second");
+      const h2 = document.createElement("h2");
+      h2.textContent = "이동하는 h2 태그";
+      h2.style.color = "yellowgreen";
+      h2.style.backgroundColor = "green";
+
+      const toFirst = () => {
+        divA.appendChild(h2);
+        setTimeout(toSecond, 1000);
+      };
+      const toSecond = () => {
+        divB.appendChild(h2);
+        setTimeout(toFirst, 3000);
+      };
+      toFirst();
+    </script>
+  </body>
+</html>
