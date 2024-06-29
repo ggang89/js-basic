@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>localStorage 활용하기</title>
+  </head>
+  <body>
+    <p></p>
+    <button>지우기</button>
+    <input type="text" />
+
+    <script>
+      const p = document.querySelector("p");
+      const input = document.querySelector("input");
+      const button = document.querySelector("button");
+
+      const savedValue = localStorage.getItem("input"); //input의 값을 읽어서 변수에 저장
+      if (savedValue) {
+        input.value = savedValue;
+        // # 변수명은 왼쪽에 써야 하는거 아닌가? 이 구조는 뭔지
+        p.textContent = `이전 실행 때의 마지막 값 : ${savedValue}`;
+      }
+
+      input.addEventListener("keyup", (event) => {
+        const value = event.currentTarget.value;
+        localStorage.setItem("input", value); //setItem =>값 저장
+      });
+
+      button.addEventListener("click", (event) => {
+        localStorage.clear(); //값을 모두 제거함
+        input.value = "";
+      });
+    </script>
+  </body>
+</html>
