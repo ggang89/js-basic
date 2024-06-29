@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="checkbox" />
+    <span>타이머 활성화</span>
+    <h1>0초</h1>
+    <button>타이머 초기화</button>
+
+    <script>
+      let checkbox = document.querySelector("input");
+      let h1 = document.querySelector("h1");
+      let [timer, timerId] = [0, 0]; //다중할당연산
+
+      const button = document.querySelector("button");
+
+      checkbox.addEventListener("change", (event) => {
+        if (event.currentTarget.checked) {
+          timerId = setInterval(() => {
+            timer += 1;
+            h1.textContent = `${timer}초`;
+          }, 1000);
+        } else {
+          clearInterval(timerId);
+        }
+      });
+
+      button.addEventListener("click", () => {
+        h1.textContent = `0초`;
+        timer = 0;
+      });
+    </script>
+  </body>
+</html>
