@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <select> 
+    <option>자바스크립트</option>
+    <option>리액트</option>
+    <option>타입스크립트</option>
+    <option>CSS</option>
+  </select>
+  <p>선택: 자바스크립트</p>
+
+  <script>
+    const select=document.querySelector('select');
+    const p = document.querySelector('p')
+
+    select.addEventListener('change',(event)=>{
+      const options=event.currentTarget.options
+      const index =event.currentTarget.options.selectedIndex
+      console.log('index',index);
+      //옵션중 선택된 것의 index번호 추출
+      //console.log(event.currentTarget) //=>select 태그
+      //console.log('event.currentTarget.options',event.currentTarget.options)
+
+      p.textContent=`선택:${options[index].textContent}`
+    })
+  </script>
+</body>
+</html>
