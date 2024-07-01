@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예외강제발생 throw</title>
+  </head>
+  <body>
+    <script>
+      //예외 강제 발생 => throw 키워드 사용
+
+      //divide() 함수 => 0으로 나눌 때 오류 발생
+
+      function divide(a, b) {
+        if (b === 0) {
+          throw "0으로 나눌 수 없습니다.";
+        }
+        return a / b;
+      }
+      console.log(divide(10, 2));
+      console.log(divide(10, 0));
+    </script>
+  </body>
+</html>
