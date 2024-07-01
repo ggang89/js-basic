@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      try {
+        const array = new Array(999999999999999);
+        //자바스크립트의 배열 크기는 한정되어 있기때문에
+        //너무 크게 선언하면 오류가 발생함
+      } catch (exception) {
+        //exception or e => 예외객체
+        console.log("exception", exception);
+        console.log();
+        console.log(`예외이름:${exception.name}`);
+        console.log(`예외 메시지:${exception.message}`);
+      }
+    </script>
+  </body>
+</html>
