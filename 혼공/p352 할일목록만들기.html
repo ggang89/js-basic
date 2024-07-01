@@ -30,14 +30,15 @@
         const text = document.createElement("span");
         const button = document.createElement("button");
 
-        const key = keyCount;
+        const key = keyCount; //변수를 변수에 저장???
         keyCount += 1;
 
-        item.setAttribute("data-key", key);
-        item.appendChild(checkbox);
-        item.appendChild(text);
-        item.appendChild(button);
-        todoList.appendChild(item);
+        item.setAttribute("data-key", key); //<div data-key="숫자">
+        item.appendChild(checkbox);        //<input>
+        item.appendChild(text);            //<span></span>
+        item.appendChild(button);          //<button></button>
+        todoList.appendChild(item);         //</div>
+        
 
         checkbox.type = "checkbox";
         checkbox.addEventListener("change", (event) => {
@@ -55,6 +56,7 @@
 
         input.value = " ";
       };
+      
       const removeTodo = (key) => {
         const item = document.querySelector(`[data-key="${key}"]`);
         todoList.removeChild(item);

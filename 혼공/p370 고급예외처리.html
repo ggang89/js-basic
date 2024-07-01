@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고급예외처리</title>
+  </head>
+  <body>
+    <script>
+      //고급예외처리 => try catch finally 구문 사용
+
+      //  try{
+      //   예외가 발생할 가능성이 있는 코드
+      //   try구문 안에서 예외가 발생하면 try구문을 진행하지 않고
+      //   catch 구문을 실행한다
+      // }catch(exception){
+      //   예외가 발생했을 때 실행할 코드
+      // }finally{
+      //   무조건 실행할 코드 =>finally구문은 필요시 사용
+      // }
+
+      //=>try-catch-finally 순으로 적어야 하며
+      //  catch와 finally 둘 중 하나는 생략이 가능하다
+      try {
+        willExcept.byeBye();
+        //존재하지 않는 객체와 메소드므로 예외 발생함 => catch 구문 실행됨
+        console.log("try구분의 마지막 줄");
+      } catch (exception) {
+        console.log("catch 구문의 마지막 줄");
+      } finally {
+        console.log("finally 구문의 마지막 줄");
+        //예외 발생 여부와 상관없이 무조건 실행됨
+      }
+    </script>
+  </body>
+</html>
