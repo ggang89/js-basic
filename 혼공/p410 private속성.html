@@ -7,29 +7,70 @@
   </head>
   <body>
     <script>
-      class Square {
-        constructor(length) {
-          if (length <= 0) {
-            throw "길이는 0보다 커야 합니다";
-            //사각형의 길이에 음수를 입력하면 강제로 오류를 발생시킨다.
-          }
-          this.length = length;
-        }
-        getPerimeter() {
-          return 4 * this.length;
-        }
-        getArea() {
-          return this.length * this.length;
-        }
-      }
-      //클래스 사용하기
-      const square = new Square(-10); //throw로 강제 오류를 발생시킴
-      console.log(`정사각형의 둘레:${square.getPerimeter()}`);
-      console.log(`정사각형의 넓이:${square.getArea()}`);
+      // class Square {
+      //   constructor(length) {
+      //     if (length <= 0) {
+      //       throw "길이는 0보다 커야 합니다";
+      //       //사각형의 길이에 음수를 입력하면 강제로 오류를 발생시킨다.
+      //     }
+      //     this.length = length;
+      //   }
+      //   getPerimeter() {
+      //     return 4 * this.length;
+      //   }
+      //   getArea() {
+      //     return this.length * this.length;
+      //   }
+      // }
+      // //클래스 사용하기
+      // const square = new Square(-10); //throw로 강제 오류를 발생시킴
+      // console.log(`정사각형의 둘레:${square.getPerimeter()}`);
+      // console.log(`정사각형의 넓이:${square.getArea()}`);
 
       //const square = new Square(10)
       //square.length = -10
       // => 생성자로 객체를 생성한 이후에 사용자가 length 속성을 변경하는 것을 막을 수는 없다
+
+      // private 속성
+      // => 클래서 사용자가 클래스 속성을 의도치 않은 방향으로 사용하는 것을 막고
+      //   클래스의 안정성을 확보하기 위해 private 속성을 사용한다.
+      // => #을 붙이면 private속성과 메소드가 된다
+      // => 사용 전에 미리 외부에 어떤 private 속성으로 사용하겠다고 선언해줘야 한다.
+
+      //  class 이름{
+      //    # 속성이름
+      //    # 메소드 이름(){
+
+      //    }
+      //  }
+      class Square {
+        #length; //이 속성을 private 속성으로 사용하겠다고 미리 선언함
+
+        constructor(length) {
+          if (length <= 0) {
+            throw "길이는 0보다 커야 합니다.";
+          }
+          this.#length = length;
+        }
+
+        getPerimeter() {
+          return 4 * this.#length;
+        }
+        getArea() {
+          return this.#length * this.#length;
+        }
+      }
+      //클래스 사용하기
+      const square = new Square(10);
+      //square.length = -10;
+      // private 속성을 사용하면 외부에서는 해당 속성에 접근할 수 없다
+      //square.length를 변경해도 결과에 영향 없음
+      //클래스 내부에서 사용하는 속성은 length가 아니라 #length 속성이므로
+
+      //square.#length =-10; //=>오류 발생됨. private속성을 외부에서 접근할 수 없으므로
+
+      console.log(`정사각형의 둘레: ${square.getPerimeter()}`);
+      console.log(`정사각형의 넓이:${square.getArea()}`);
     </script>
   </body>
 </html>
