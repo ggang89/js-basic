@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Square {
+        constructor(length) {
+          if (length <= 0) {
+            throw "길이는 0보다 커야 합니다";
+            //사각형의 길이에 음수를 입력하면 강제로 오류를 발생시킨다.
+          }
+          this.length = length;
+        }
+        getPerimeter() {
+          return 4 * this.length;
+        }
+        getArea() {
+          return this.length * this.length;
+        }
+      }
+      //클래스 사용하기
+      const square = new Square(-10); //throw로 강제 오류를 발생시킴
+      console.log(`정사각형의 둘레:${square.getPerimeter()}`);
+      console.log(`정사각형의 넓이:${square.getArea()}`);
+
+      //const square = new Square(10)
+      //square.length = -10
+      // => 생성자로 객체를 생성한 이후에 사용자가 length 속성을 변경하는 것을 막을 수는 없다
+    </script>
+  </body>
+</html>
