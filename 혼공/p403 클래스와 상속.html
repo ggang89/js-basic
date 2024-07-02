@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>클래스와 상속</title>
+  </head>
+  <body>
+    <script>
+      //사각형 클래스
+      class Rectangle {
+        constructor(width, height) {
+          this.width = width;
+          this.height = height;
+        }
+
+        //사각형 둘레 구하는 메소드
+        getPerimeter() {
+          return 2 * (this.width + this.height);
+        }
+
+        //사격형 넓이 구하는 메소드
+        getArea() {
+          return this.width * this.height;
+        }
+      }
+      const rectangle = new Rectangle(10, 20);
+      console.log(`사각형의 둘레: ${rectangle.getPerimeter()}`);//60
+      console.log(`사각형의 넓이: ${rectangle.getArea()}`);//200
+
+      //정사각형 클래스
+      // class Square {
+      //   constructor(length) {
+      //     this.length = length;
+      //   }
+      //   //정사각형 둘레를 구하는 메소드
+      //   getPerimeter() {
+      //     return 4 * this.length;
+      //   }
+      //   //정사각형 넓이를 구하는 메소드
+      //   getArea() {
+      //     return this.length * this.length;
+      //   }
+      // }
+      // //클래스 사용하기
+      // const square = new Square(10);
+      // console.log(`정사각형의 둘레: ${square.getPerimeter()}`);
+      // console.log(`정사각형의 넓이: ${square.getArea()}`);
+
+      //클래스 상속
+      //=> 어떤 클래스가 가지고 있는 유산(속성과 메소드)를 다른 클래스에게 물려주는 것
+      // class 클래스 이름 extends 부모클래스 이름{ }
+
+      //정사각형 클래스를 상속으로 표현
+      class Square extends Rectangle{
+        constructor(length){
+          super(length,length) //부모의 생성자 함수 호출=>부모는 매개변수 2개였으므로, 각각에 length넣어줌
+        }
+      }
+      const square = new Square(10,20);
+      console.log(`정사각형의 둘레: ${square.getPerimeter()}`);//40
+      console.log(`정사각형의 넓이: ${square.getArea()}`);//100
+
+    </script>
+  </body>
+</html>
