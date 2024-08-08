@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="one">
+      <div class="two">
+        <div class="three">pppp</div>
+      </div>
+    </div>
+
+    <script>
+      const divs = document.getElementsByTagName("div");
+
+      // for (let i = 0; i < divs.length; i++) {
+      //   divs[i].addEventListener("click", (e) =>
+      //     console.log(e.currentTarget.className, '버블링')
+      //   );
+      // }
+
+      for (let i = 0; i < divs.length; i++) {
+        divs[i].addEventListener(
+          "click",
+          (e) => {
+            e.stopPropagation(); //이벤트 전이전달 금지
+            console.log(e.currentTarget.className, "캡처링");
+          },
+          { capture: true }
+        );
+      }
+    </script>
+  </body>
+</html>
